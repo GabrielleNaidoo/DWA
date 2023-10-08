@@ -3,6 +3,23 @@ import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
 let page = 1;
 let matches = books;
 
+// @ts-check
+
+/**
+ * The collection of DOM elements selected by their data attributes.
+ *
+ * @typedef {Object} HtmlElements
+ * @property {Object} list - Contains elements related to the list of books.
+ * @property {Object} search - Contains elements related to the search functionality.
+ * @property {Object} settings - Contains elements related to the settings functionality.
+ * @property {Object} other - Contains other elements that don't fall into a specific group.
+ *
+ */
+
+/**
+ * The object containing references to the DOM elements used throughout the code.
+ * @type {HtmlElements}
+ */
 const html = {
   list: {
     items: document.querySelector('[data-list-items]'),
@@ -38,7 +55,16 @@ const html = {
 
 const starting = document.createDocumentFragment();
 
-// To create book items that appear on the page intially
+/**
+ * Creates a book item based on the provided book data
+ *
+ * @param {Object} book - The object that provides the book data.
+ * @param{string} book.author - The author of the book.
+ * @param{string} book.id - The unique id of the book.
+ * @param{string} book.image - The URL of the cover image for the book.
+ * @param{string} book.title - The title of the book.
+ * @returns{HTMLButtonElement} element - The element representing the book item with all of its associated properties.
+ */
 const createBookItem = (book) => {
   const { author, id, image, title } = book;
   const element = document.createElement('button');
@@ -60,13 +86,19 @@ const createBookItem = (book) => {
   return element;
 };
 
-// For inital batch without filters
+// For inital batch of books displayed on screen
 for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
   starting.appendChild(createBookItem(book));
 }
 html.list.items.appendChild(starting);
 
-// To create first dropdown option for both genre and author:
+/**
+ * Creates an HTML option element with the specified value and innerText - Used to create the first option elements for both Genre and Author.
+ *
+ * @param {string} value - The value that will be used for the option element.
+ * @param {string} innerText - The text that will be displayed on the option element.
+ * @returns{HTMLOptionElement} - The html option element that is created using the specified value and innerText properties.
+ */
 const createFirstOption = (value, innerText) => {
   const firstOption = document.createElement('option');
   firstOption.value = value;
@@ -75,6 +107,15 @@ const createFirstOption = (value, innerText) => {
 };
 
 // Function to populate dropdown for both Authors and Genres:
+
+/**
+ * Creates HTML option elements to populate a dropdown menu with the provided object's id and name properties - Used to populate the dorpdown menus for both the genres and the authors.
+ *
+ *@param {Object} object - The object containing the properties "id" and "name" that are used to create the HTML option element.
+ *@param {string} object.id - The value that the HTML option element's value attribute will be set to.
+ *@param {string} object.name - The text that will be displayed on the HTML option element in the dropdown menu.
+ *@returns {HTMLOptionElement}
+ */
 const populateDropdown = (object) => {
   const [id, name] = object;
   const element = document.createElement('option');
