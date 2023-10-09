@@ -144,19 +144,6 @@ for (const author of Object.entries(authors)) {
 
 html.search.authors.appendChild(authorsHtml);
 
-if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-  html.settings.theme.value = 'night';
-  document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-  document.documentElement.style.setProperty('--color-light', '10, 10, 20');
-} else {
-  html.settings.theme.value = 'day';
-  document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
-  document.documentElement.style.setProperty('--color-light', '255, 255, 255');
-}
-
 html.other.button.innerText = `Show more (${books.length - BOOKS_PER_PAGE})`;
 html.other.button.disabled = matches.length - page * BOOKS_PER_PAGE > 0;
 
@@ -190,19 +177,80 @@ html.list.close.addEventListener('click', () => {
   html.list.overlay.open = false;
 });
 
+/**
+ * Represents the theme options for the different modes.
+ * @typedef {Object} ThemeOptions
+ * @property {Object} day - Theme options for day mode.
+ * @property {string} day.dark - The dark mode color in RGB format-('10, 10, 20').
+ * @property {string} day.light - The light mode color in RGB format-('255, 255, 255').
+ * @property {Object} night - Theme options for night mode.
+ * @property {string} night.dark - The dark mode color in RGB format-('255, 255, 255').
+ * @property {string} night.light - The light mode color in RGB format-('10, 10, 20').
+ */
+
+/**
+ * Theme options for the different color schemes in day and night modes.
+ * @type {ThemeOptions}
+ */
+
+const themeOptions = {
+  day: {
+    dark: '10, 10, 20',
+    light: '255, 255, 255',
+  },
+  night: {
+    dark: '255, 255, 255',
+    light: '10, 10, 20',
+  },
+};
+
+if (
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches
+) {
+  html.settings.theme.value = 'night';
+  document.documentElement.style.setProperty(
+    '--color-dark',
+    themeOptions.night.dark,
+  );
+  document.documentElement.style.setProperty(
+    '--color-light',
+    themeOptions.night.light,
+  );
+} else {
+  html.settings.theme.value = 'day';
+  document.documentElement.style.setProperty(
+    '--color-dark',
+    themeOptions.day.dark,
+  );
+  document.documentElement.style.setProperty(
+    '--color-light',
+    themeOptions.day.light,
+  );
+}
+
 html.settings.form.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const { theme } = Object.fromEntries(formData);
 
   if (theme === 'night') {
-    document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-    document.documentElement.style.setProperty('--color-light', '10, 10, 20');
-  } else {
-    document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
+    document.documentElement.style.setProperty(
+      '--color-dark',
+      themeOptions.night.dark,
+    );
     document.documentElement.style.setProperty(
       '--color-light',
-      '255, 255, 255',
+      themeOptions.night.light,
+    );
+  } else {
+    document.documentElement.style.setProperty(
+      '--color-dark',
+      themeOptions.day.dark,
+    );
+    document.documentElement.style.setProperty(
+      '--color-light',
+      themeOptions.day.light,
     );
   }
 
