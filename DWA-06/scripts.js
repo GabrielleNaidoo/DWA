@@ -65,30 +65,42 @@ const starting = document.createDocumentFragment();
  * @param{string} book.title - The title of the book.
  * @returns{HTMLButtonElement} element - The element representing the book item with all of its associated properties.
  */
+
+// DWA08: Turning createBookItem function into a factory function:
+
 const createBookItem = (book) => {
   const { author, id, image, title } = book;
-  const element = document.createElement('button');
-  element.classList = 'preview';
-  element.setAttribute('data-preview', id);
 
-  element.innerHTML = `
+  return {
+    author,
+    id,
+    image,
+    title,
+    createPreview() {
+      const element = document.createElement('button');
+      element.classList = 'preview';
+      element.setAttribute('data-preview', id);
+
+      element.innerHTML = `
       <img
           class="preview__image"
           src="${image}"
       />
-      
+
       <div class="preview__info">
           <h3 class="preview__title">${title}</h3>
           <div class="preview__author">${authors[author]}</div>
       </div>
   `;
 
-  return element;
+      return element;
+    },
+  };
 };
 
 // For inital batch of books displayed on screen
 for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
-  starting.appendChild(createBookItem(book));
+  starting.appendChild(createBookItem(book).createPreview());
 }
 html.list.items.appendChild(starting);
 
@@ -297,7 +309,7 @@ html.search.form.addEventListener('submit', (event) => {
 
   // To create list items for each of the books in the search results(after filters have been applied )
   for (const book of result.slice(0, BOOKS_PER_PAGE)) {
-    newItems.appendChild(createBookItem(book));
+    newItems.appendChild(createBookItem(book).createPreview());
   }
 
   html.list.items.appendChild(newItems);
@@ -323,7 +335,7 @@ html.other.button.addEventListener('click', () => {
     page * BOOKS_PER_PAGE,
     (page + 1) * BOOKS_PER_PAGE,
   )) {
-    fragment.appendChild(createBookItem(book));
+    fragment.appendChild(createBookItem(book).createPreview());
   }
 
   html.list.items.appendChild(fragment);
