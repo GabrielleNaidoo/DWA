@@ -1,5 +1,5 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
-
+import { BookPreview, template } from './book-preview.js';
 let page = 1;
 let matches = books;
 
@@ -68,39 +68,47 @@ const starting = document.createDocumentFragment();
 
 // DWA08: Turning createBookItem function into a factory function:
 
-const createBookItem = (book) => {
-  const { author, id, image, title } = book;
+// const createBookItem = (book) => {
+//   const { author, id, image, title } = book;
+//   document.createElement('book-preview');
 
-  return {
-    author,
-    id,
-    image,
-    title,
-    createPreview() {
-      const element = document.createElement('button');
-      element.classList = 'preview';
-      element.setAttribute('data-preview', id);
+//   return {
+//     author,
+//     id,
+//     image,
+//     title,
+//     createPreview() {
+//       const element = document.createElement('button');
+//       element.classList = 'preview';
+//       element.setAttribute('data-preview', id);
 
-      element.innerHTML = `
-      <img
-          class="preview__image"
-          src="${image}"
-      />
+//       element.innerHTML = `
+//           <img
+//               class="preview__image"
+//               src="${image}"
+//           />
 
-      <div class="preview__info">
-          <h3 class="preview__title">${title}</h3>
-          <div class="preview__author">${authors[author]}</div>
-      </div>
-  `;
+//           <div class="preview__info">
+//               <h3 class="preview__title">${title}</h3>
+//               <div class="preview__author">${authors[author]}</div>
+//           </div>
+//       `;
 
-      return element;
-    },
-  };
-};
+//       return element;
+//     },
+//   };
+// };
 
 // For inital batch of books displayed on screen
 for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
-  starting.appendChild(createBookItem(book).createPreview());
+  // starting.appendChild(createBookItem(book).createPreview());
+  const { author, title, id, image } = book;
+  const bookPreview = document.createElement('book-preview');
+  bookPreview.setAttribute('data-preview', id);
+  bookPreview.image = image;
+  bookPreview.title = title;
+  bookPreview.author = authors[author];
+  starting.appendChild(bookPreview);
 }
 html.list.items.appendChild(starting);
 
@@ -309,7 +317,14 @@ html.search.form.addEventListener('submit', (event) => {
 
   // To create list items for each of the books in the search results(after filters have been applied )
   for (const book of result.slice(0, BOOKS_PER_PAGE)) {
-    newItems.appendChild(createBookItem(book).createPreview());
+    // newItems.appendChild(createBookItem(book).createPreview());
+    const { author, title, id, image } = book;
+    const bookPreview = document.createElement('book-preview');
+    bookPreview.setAttribute('data-preview', id);
+    bookPreview.image = image;
+    bookPreview.title = title;
+    bookPreview.author = authors[author];
+    newItems.appendChild(bookPreview);
   }
 
   html.list.items.appendChild(newItems);
@@ -335,7 +350,14 @@ html.other.button.addEventListener('click', () => {
     page * BOOKS_PER_PAGE,
     (page + 1) * BOOKS_PER_PAGE,
   )) {
-    fragment.appendChild(createBookItem(book).createPreview());
+    // fragment.appendChild(createBookItem(book).createPreview());
+    const { author, title, id, image } = book;
+    const bookPreview = document.createElement('book-preview');
+    bookPreview.setAttribute('data-preview', id);
+    bookPreview.image = image;
+    bookPreview.title = title;
+    bookPreview.author = authors[author];
+    fragment.appendChild(bookPreview);
   }
 
   html.list.items.appendChild(fragment);
