@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tally Count</title>
+    <script src="/DWA-10/script.js" defer type="module"></script>
+    <link rel="stylesheet" href="/DWA-10/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.11.0/cdn/themes/light.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.11.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="header_title">Tally Count</h1>
+    </header>
+    <!-- Set min and max values and adjust variant as the button gets closer to either -->
+    <sl-card>
+      <div class="counter" data-counter="0">0</div>
+      <!-- <sl-badge variant="neutral" data-counter="0">0</sl-badge> -->
+
+      <div slot="footer">
+        <sl-button class="button button__subtract" data-subtract outline>
+          <span slot="prefix">
+            <sl-icon name="dash-lg"></sl-icon>
+          </span>
+        </sl-button>
+        <sl-button class="button button__add" data-add outline>
+          <span slot="prefix">
+            <sl-icon name="plus-lg"></sl-icon>
+          </span>
+        </sl-button>
+      </div>
+    </sl-card>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+:root {
+  --color-white: #ffffff;
+  --color-dark-grey: #33333d;
+  --color-medium-grey: #424250;
+  --color-light-grey: #9ca3ae;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-medium-grey);
+  color: var(--color-white);
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+}
+
+/*header:*/
+.header_title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--color-light-grey);
+  margin-top: 5 rem;
+}
+
+/*Parts of sl-card:*/
+sl-card::part(base) {
+  background-color: var(--color-dark-grey);
+  border: none;
+  height: 30rem;
+}
+
+sl-card::part(body) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem;
+  font-size: 5rem;
+}
+
+sl-card::part(footer) {
+  width: 40rem;
+  display: flex;
+  justify-content: center;
+  height: 10rem;
+}
+
+sl-card {
+  width: 40rem; /* Adjust to your desired width */
+}
+
+/* Parts of sl-button:*/
+sl-button::part(prefix) {
+  color: var(--color-light-grey);
+}
+
+sl-button::part(base) {
+  width: 16rem;
+}
