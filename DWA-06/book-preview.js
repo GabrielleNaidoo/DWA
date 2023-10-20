@@ -64,13 +64,13 @@ template.innerHTML = `
 }
 
 </style>
-<button class="preview" data-preview >
+<button class="preview" data-preview="" >
 <img
-class="preview__image"
+class="preview__image" data-image=""
 />
 <div class="preview__info">
-<h3 class="preview__title"></h3>
-<div class="preview__author"></div>
+<h3 class="preview__title" data-title=""></h3>
+<div class="preview__author" data-author=""></div>
 </div>
 </button>`;
 
@@ -78,27 +78,18 @@ export class BookPreview extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' }); // creates the shadow DOM
-    shadow.append(template.content.cloneNode(true)); // attaches the template tot he shadow DOM
+    shadow.append(template.content.cloneNode(true)); // attaches the template to the shadow DOM
     this.element = shadow.querySelector('[data-preview]'); // fetches elements from the shadow DOM
     this.imageElement = shadow.querySelector('.preview__image');
     this.titleElement = shadow.querySelector('.preview__title');
     this.authorElement = shadow.querySelector('.preview__author');
   }
 
-  set image(image) {
-    this.imageElement.src = image;
-  }
-
-  set title(title) {
-    this.titleElement.textContent = title;
-  }
-
-  set author(author) {
-    this.authorElement.textContent = author;
-  }
-
   connectedCallback() {
-    const id = this.getAttribute('data-preview');
+    this.element.dataset.preview = this.getAttribute('data-preview-custom');
+    this.imageElement.src = this.getAttribute('data-image');
+    this.titleElement.textContent = this.getAttribute('data-title');
+    this.authorElement.textContent = this.getAttribute('data-author');
   }
 }
 

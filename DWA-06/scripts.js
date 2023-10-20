@@ -104,10 +104,10 @@ for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
   // starting.appendChild(createBookItem(book).createPreview());
   const { author, title, id, image } = book;
   const bookPreview = document.createElement('book-preview');
-  bookPreview.setAttribute('data-preview', id);
-  bookPreview.image = image;
-  bookPreview.title = title;
-  bookPreview.author = authors[author];
+  bookPreview.setAttribute('data-preview-custom', id);
+  bookPreview.setAttribute('data-title', title);
+  bookPreview.setAttribute('data-image', image);
+  bookPreview.setAttribute('data-author', authors[author]);
   starting.appendChild(bookPreview);
 }
 html.list.items.appendChild(starting);
@@ -320,10 +320,10 @@ html.search.form.addEventListener('submit', (event) => {
     // newItems.appendChild(createBookItem(book).createPreview());
     const { author, title, id, image } = book;
     const bookPreview = document.createElement('book-preview');
-    bookPreview.setAttribute('data-preview', id);
-    bookPreview.image = image;
-    bookPreview.title = title;
-    bookPreview.author = authors[author];
+    bookPreview.setAttribute('data-preview-custom', id);
+    bookPreview.setAttribute('data-title', title);
+    bookPreview.setAttribute('data-image', image);
+    bookPreview.setAttribute('data-author', authors[author]);
     newItems.appendChild(bookPreview);
   }
 
@@ -353,10 +353,10 @@ html.other.button.addEventListener('click', () => {
     // fragment.appendChild(createBookItem(book).createPreview());
     const { author, title, id, image } = book;
     const bookPreview = document.createElement('book-preview');
-    bookPreview.setAttribute('data-preview', id);
-    bookPreview.image = image;
-    bookPreview.title = title;
-    bookPreview.author = authors[author];
+    bookPreview.setAttribute('data-preview-custom', id);
+    bookPreview.setAttribute('data-title', title);
+    bookPreview.setAttribute('data-image', image);
+    bookPreview.setAttribute('data-author', authors[author]);
     fragment.appendChild(bookPreview);
   }
 
