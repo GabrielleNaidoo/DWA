@@ -60,15 +60,12 @@ sl-card {
 
 /* Parts of sl-button:*/
 
-sl-button.button__add {
-  width: 16rem;
-  flex: 1;
-}
-sl-button.button__subtract {
-  width: 16rem;
-  flex: 1;
-}
-
 sl-button::part(label) {
   color: var(--color-white);
+}
+
+sl-button::part(base) {
+  background-color: var(--color-dark-grey);
+  width: 16rem;
+  flex: 1;
 }
