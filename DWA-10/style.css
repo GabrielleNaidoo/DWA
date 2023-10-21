@@ -52,7 +52,7 @@ sl-card::part(footer) {
   width: 40rem;
   display: flex;
   justify-content: center;
-  height: 10rem;
+  padding-bottom:;
 }
 
 sl-card {
@@ -60,10 +60,11 @@ sl-card {
 }
 
 /* Parts of sl-button:*/
-sl-button::part(prefix) {
-  color: var(--color-light-grey);
-}
 
 sl-button::part(base) {
   width: 16rem;
+}
+
+sl::part(label) {
+  color: var(--color-white);
 }
