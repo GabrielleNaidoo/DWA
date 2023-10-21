@@ -7,6 +7,8 @@
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
@@ -14,7 +16,6 @@ html {
 }
 
 body {
-  margin: 0;
   background-color: var(--color-medium-grey);
   color: var(--color-white);
   height: 100%;
@@ -30,7 +31,7 @@ body {
   font-size: 3.5rem;
   font-weight: bold;
   color: var(--color-light-grey);
-  margin-top: 5 rem;
+  margin-top: 5rem;
 }
 
 /*Parts of sl-card:*/
@@ -49,22 +50,25 @@ sl-card::part(body) {
 }
 
 sl-card::part(footer) {
-  width: 40rem;
   display: flex;
   justify-content: center;
-  padding-bottom:;
 }
 
 sl-card {
-  width: 40rem; /* Adjust to your desired width */
+  width: 40rem;
 }
 
 /* Parts of sl-button:*/
 
-sl-button::part(base) {
+sl-button.button__add {
   width: 16rem;
+  flex: 1;
+}
+sl-button.button__subtract {
+  width: 16rem;
+  flex: 1;
 }
 
-sl::part(label) {
+sl-button::part(label) {
   color: var(--color-white);
 }
