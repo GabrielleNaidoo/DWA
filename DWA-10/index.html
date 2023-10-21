@@ -22,20 +22,13 @@
 
     <sl-card>
       <div class="counter" data-counter="0">0</div>
-
-      <div slot="footer" class="footer">
-        <sl-button
-          size="large"
-          class="button button__subtract"
-          data-subtract
-          outline
-          >-</sl-button
-        >
-        <sl-button size="large" class="button button__add" data-add outline
-          >+</sl-button
-        >
-      </div>
     </sl-card>
+    <div class="increment__buttons">
+      <sl-button class="button button__subtract" data-subtract outline
+        >-</sl-button
+      >
+      <sl-button class="button button__add" data-add outline>+</sl-button>
+    </div>
 
     <sl-button class="button reset__button" size="large" data-reset
       >Reset</sl-button
