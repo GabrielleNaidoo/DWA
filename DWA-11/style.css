@@ -1,0 +1,80 @@
+:root {
+  --color-white: #ffffff;
+  --color-dark-grey: #33333d;
+  --color-medium-grey: #424250;
+  --color-light-grey: #9ca3ae;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  background-color: var(--color-medium-grey);
+  color: var(--color-white);
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*header:*/
+.header_title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--color-light-grey);
+  margin-top: 5rem;
+}
+
+/*Parts of sl-card:*/
+sl-card::part(base) {
+  background-color: var(--color-dark-grey);
+  border: none;
+  height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem;
+  font-size: 6rem;
+  width: 40rem;
+  margin-top: 5rem;
+}
+
+/* Parts of sl-button:*/
+
+sl-button::part(label) {
+  color: var(--color-white);
+  font-size: 1.5rem;
+}
+
+sl-button::part(base) {
+  background-color: var(--color-dark-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 2rem;
+}
+
+.reset__button {
+  width: 10rem;
+  margin-bottom: 2rem;
+}
+
+.increment__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 4rem;
+}
+
+.button {
+  width: 20rem;
+}
