@@ -1,25 +1,41 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+// Define initial state:
 const intialState = { count: 0 };
 
-const myReducer = (state = intialState, action) => {
-  const newState = { ...state };
-  if (action.type === "ADD") {
-    newState.count += 1;
-  }
-  if (action.type === "SUBTRACT") {
-    newState.count -= 1;
-  }
-  if (action.type === "RESET") {
-    newState.count = 0;
-  }
+// Define actions
+const addAction = () => ({
+  type: "ADD",
+});
+const subtractAction = () => ({
+  type: "SUBTRACT",
+});
+const resetAction = () => ({
+  type: "RESET",
+});
 
-  return newState;
+// Define reducer:
+const tallyCountReducer = (state = intialState, action) => {
+  const newState = { ...state };
+  switch (action.type) {
+    case "ADD":
+      return (state.count += 1);
+    case "SUBTRACT":
+      return (state.count -= 1);
+    case "RESET":
+      return (state.count = 0);
+    default:
+      return state;
+  }
 };
 
-const store = configureStore(myReducer);
+// create Redux store:
+let store = configureStore({ reducer: tallyCountReducer });
+
+//subscribe store changes:
 store.subscribe(() => {
   console.log(store.getState());
 });
 
+// Dispatch actions to update store:
 store.dispatch({ type: "ADD" });
