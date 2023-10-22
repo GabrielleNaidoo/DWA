@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { createStore } from "redux";
 
 // Define initial state:
 const intialState = { count: 0 };
@@ -30,7 +30,7 @@ const tallyCountReducer = (state = intialState, action) => {
 };
 
 // create Redux store:
-let store = configureStore({ reducer: tallyCountReducer });
+let store = createStore(tallyCountReducer);
 
 //subscribe store changes:
 store.subscribe(() => {
