@@ -59,3 +59,7 @@ tally.increment();
 tally.unsubscribe(subscriber1);
 tally.increment();
 tally.decrement();
+tally.decrement();
+tally.decrement();
+tally.decrement();
+tally.decrement();
