@@ -55,6 +55,16 @@ console.log(containsSArray);
 
 // Using only reduce, turn the above into an object that indicates the province of an individual :
 
+// - result is an empty object initially,
+// - Then its properties are set,
+// - First property is the current element of the array
+// - and that properties value is the element in the province array that corresponds to the current iteration
+const provinceNameObj = names.reduce((result, name, index) => {
+  result[name] = provinces[index];
+  return result;
+}, {});
+console.log(provinceNameObj);
+
 /*********************************************************************************************************** */
 
 const products = [
@@ -132,5 +142,5 @@ const lowest = productsWithPrices.reduce((min, productObj) => {
 console.log(`Highest: ${highest} , Lowest: ${lowest}`);
 
 // Using only Object.entries and reduce recreate the object with the exact same values. However, the following object keys should be changed in the new array:
-//-product should be changed to name
-//-price should be changed to cost
+// -product should be changed to name
+// -price should be changed to cost
