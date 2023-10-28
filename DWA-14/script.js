@@ -95,10 +95,10 @@ class TallyApp extends LitElement {
     return html` 
     <p class="counter">${this.count}</p>
       <div class="button_container" >
-        <button class="button button__subtract" @click="${this.decrement}" ?disabled="${this.isMin}">
+        <button class="button button__subtract" @click="${this.decrement}" ?disabled="${this.count === -10}">
           -
         </button>
-        <button class="button button__add" @click="${this.increment}" ?disabled="${this.isMax}">+</button>
+        <button class="button button__add" @click="${this.increment}" ?disabled="${this.count === 10}">+</button>
         <button class="button reset__button" @click="${this.reset}">
           Reset
         </button>
