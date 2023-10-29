@@ -43,6 +43,7 @@ class TallyApp extends LitElement {
     this.requestUpdate('isMin');
     this.requestUpdate('isMax');
   }
+
   reset() {
     this.count = 0;
     this.isMin = false;

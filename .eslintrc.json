@@ -11,6 +11,7 @@
   "rules": {
     "no-restricted-syntax": "off",
     "max-classes-per-file": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "import/extensions": "off"
   }
 }
