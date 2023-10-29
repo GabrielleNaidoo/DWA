@@ -23,12 +23,6 @@ class TallyApp extends LitElement {
     }
 
 
-    // const incrementState = {
-    //   incrementCount: this.requestUpdate('count'),
-    //   incrementIsMin: this.requestUpdate('isMin'),
-    //   incrementIsMax: this.requestUpdate('isMax'),
-    // }
-    // console.log(incrementState);
     this.requestUpdate('count');
     this.requestUpdate('isMin');
     this.requestUpdate('isMax');
@@ -43,12 +37,7 @@ class TallyApp extends LitElement {
       this.isMin = true;
     }
 
-    // const decrementState = {
-    //   decrementCount: this.requestUpdate('count'),
-    //   decrementIsMin: this.requestUpdate('isMin'),
-    //   decrementIsMax: this.requestUpdate('isMax'),
-    // }
-    // console.log(decrementState);
+
 
     this.requestUpdate('count');
     this.requestUpdate('isMin');
@@ -59,12 +48,6 @@ class TallyApp extends LitElement {
     this.isMin = false;
     this.isMax = false;
 
-    // const resetState = {
-    //   resetCount: this.requestUpdate('count'),
-    //   resetIsMin: this.requestUpdate('isMin'),
-    //   resetIsMax: this.requestUpdate('isMax'),
-    // }
-    // console.log(resetState);
     this.requestUpdate('count');
     this.requestUpdate('isMin');
     this.requestUpdate('isMax');
